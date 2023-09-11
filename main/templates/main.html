@@ -1,12 +1,22 @@
 <html>
     <head>
-
+        <meta charset="UTF-8">
+        <title>{{Nama_Aplikasi}}</title>
     </head>
     <body>
         <h1>{{Nama_Aplikasi}}</h1>
         <div>
             <p>Nama : {{Nama}}</p>
             <p>Class : {{Class}}</p>
+        </div>
+        <div>
+            {% for item in Inventory %}
+            <li>
+                <strong>Name:</strong> {{ item.name }}<br>
+                <strong>Amount:</strong> {{ item.amount }}<br>
+                <strong>Description:</strong> {{ item.description }}
+            </li>
+            {% endfor %}
         </div>
     </body>
 
