@@ -11,12 +11,10 @@
         </div>
         <div>
             {% for item in Inventory %}
-            <li>
                 <strong>Name:</strong> {{ item.name }}<br>
                 <strong>Amount:</strong> {{ item.amount }}<br>
                 <strong>Description:</strong> {{ item.description }}
-                <br>{{item.engine}}</br>
-            </li>
+                <strong><br>Engine type:</strong> {{item.engine}}</br>
             {% endfor %}
         </div>
     </body>
