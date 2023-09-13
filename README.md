@@ -1,5 +1,9 @@
 # **Pemrograman Berbasis Platform**
 
+### Nama   : Thirza Ahmad Tsaqif
+### NPM    : 2206082556
+### Kelas  : PBP E
+
 ## **Daftar Isi**:
 
 - [**Tugas 2**](#tugas-2)
