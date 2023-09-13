@@ -1,4 +1,4 @@
-# **Tugas 2**
+# **Tugas Pemrograman Berbasis Platform**
 
 **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
 
