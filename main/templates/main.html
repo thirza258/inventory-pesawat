@@ -1,23 +1,41 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{{Nama_Aplikasi}}</title>
-    </head>
-    <body>
-        <h1>{{Nama_Aplikasi}}</h1>
-        <div>
-            <p>Nama : {{Nama}}</p>
-            <p>Class : {{Class}}</p>
-        </div>
-        <div>
-            {% for item in Inventory %}
-                <strong>Name:</strong> {{ item.name }}<br>
-                <strong>Amount:</strong> {{ item.amount }}<br>
-                <strong>Description:</strong> {{ item.description }}
-                <strong><br>Engine type:</strong> {{item.engine}}</br>
-                <p>--------------------------------</p>
-            {% endfor %}
-        </div>
-    </body>
 
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{Nama_Aplikasi}}</h1>
+    <div>
+        <p>Nama : {{Nama}}</p>
+        <p>Class : {{Class}}</p>
+    </div>
+    <div>
+           <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Engine Type</th>
+                    <th>Have Winglet</th>
+                </tr>
+            
+                {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+            
+                {% for item in Inventory %}
+                    <tr>
+                        <td>{{item.name}}</td>
+                        <td>{{item.amount}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.engine}}</td>
+                        <td>{{item.winglet}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+            <br />
+            
+            <a href="{% url 'main:add_item' %}">
+                <button>
+                    Add New Item
+                </button>
+            </a>
+        </div>
+    {% endblock content %}
