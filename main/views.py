@@ -14,8 +14,8 @@ def main_view(request):
         "Nama": "Thirza Ahmad Tsaqif",
         "Class": "PBP E",
         "Inventory" : items,
+        "jumlah_item": len(items),
     }
-    print(items)
     return render(request, "main.html", context)
 
 def add_item(request):
@@ -42,5 +42,5 @@ def json_format(request):
 
 def json_format_by_id(request, id):
     data = Item.objects.filter(id=id)
-    return HttpResponse(serializers.serializer("json", data), content_type="application/json")
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
