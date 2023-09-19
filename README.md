@@ -2,9 +2,16 @@
 
 ## **Daftar Isi**:
 
+- [**Tugas 1**](#tugas-1)
 - [**Tugas 2**](#tugas-2)
 - [**Tugas 3**](#tugas-3)
 
+---
+## **Tugas 1**
+
+Dapat diakses di [Tugas 1](https://docs.google.com/document/d/18LlGQgYADs7vUt7ymD71-ySPDvE9NGB-37oUFy1Swz0/edit?usp=sharing)
+
+---
 ## **Tugas 2**
 
 ### **Implementasi Model-View-Template (MVT) pada Django**
