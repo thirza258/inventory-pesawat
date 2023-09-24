@@ -128,3 +128,25 @@ Referensi:
   - Melakukan push ke repository dengan *git push origin development* agar hasil dari tugas 3 dapat dilihat di github.
 - [6] Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama.
   - Menambahkan context pada fungsi main_view dengan nama **jumlah_item** yang berisi jumlah item yang ada di database dengan len(items). Lalu pada file html menambahkan kalimat "Kamu menyimpan {{ jumlah_item }} item pada aplikasi ini" di atas tabel data. {{jumlah_item}} akan mengambil value dari pasangan key value di context dari key **jumlah_item**.
+
+---
+
+## **Tugas 4**
+
+**Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?**
+- Django UserCreationForm adalah form yang sudah dibuat oleh django untuk membuat user baru. UserCreationForm memiliki field username, password1, dan password2. UserCreationForm memiliki kelebihan yaitu mudah digunakan karena sudah dibuat oleh django dan dapat digunakan untuk membuat user baru. UserCreationForm memiliki kekurangan yaitu tidak dapat digunakan untuk membuat user dengan field yang lebih banyak seperti email, nama, dan lain-lain.
+
+**Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting**
+- Autentikasi adalah proses untuk memverifikasi identitas user yang ingin mengakses aplikasi. Autentikasi dapat dilakukan dengan username dan password atau dengan token. Autentikasi penting karena dapat membatasi user yang dapat mengakses aplikasi.
+
+- Otorisasi adalah proses untuk memverifikasi hak akses user yang telah terautentikasi. Otorisasi dapat dilakukan dengan mengecek permission yang dimiliki user. Otorisasi penting karena dapat membatasi user yang telah terautentikasi untuk mengakses fitur-fitur yang ada di aplikasi.
+
+**Apa itu *cookies* dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?**
+- Cookies adalah data yang disimpan di browser user yang dapat digunakan untuk menyimpan data yang dibutuhkan untuk aplikasi web. Cookies dapat digunakan untuk menyimpan data yang dibutuhkan untuk aplikasi web seperti data login, data keranjang belanja, dan lain-lain. Django menggunakan cookies untuk mengelola data sesi pengguna dengan menyimpan session id di cookies. Session id digunakan untuk mengidentifikasi user yang telah terautentikasi dan mengakses aplikasi web.
+
+**Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?**
+- Penggunaan cookies aman secara default dalam pengembangan web karena cookies hanya dapat diakses oleh server yang membuat cookies tersebut. Namun, terdapat risiko potensial yang harus diwaspadai yaitu cookies dapat digunakan untuk melacak user dan cookies dapat digunakan untuk menyimpan data yang tidak aman seperti data login.
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+- [1]Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+  - 

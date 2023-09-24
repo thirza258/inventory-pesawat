@@ -2,10 +2,10 @@
 {% extends 'base.html' %}
    
 {% block content %}
-    <h1>{{Nama_Aplikasi}}</h1>
+    <h1>{{nama_aplikasi}}</h1>
     <div>
-        <p>Nama : {{Nama}}</p>
-        <p>Class : {{Class}}</p>
+        <p>Nama : {{nama}}</p>
+        <p>Class : {{class}}</p>
     </div>
     <div>
         <p> Terdapat {{jumlah_item}} pesawat yang terdaftar pada aplikasi Inventory ini </p>
@@ -15,9 +15,11 @@
                 <tr>
                     <th>Name</th>
                     <th>Amount</th>
+                    <th>Add Amount</th>
                     <th>Description</th>
                     <th>Engine Type</th>
                     <th>Have Winglet</th>
+                    <th>Delete Item</th>
                 </tr>
             
                 {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
@@ -26,9 +28,11 @@
                     <tr>
                         <td>{{item.name}}</td>
                         <td>{{item.amount}}</td>
+                        <td><button><a href="{% url 'main:add_amount' item.id %}">Add Amount</a></button></td>
                         <td>{{item.description}}</td>
                         <td>{{item.engine}}</td>
                         <td>{{item.winglet}}</td>
+                        <td><button><a href="{% url 'main:delete_data' item.id %}">Delete</a></button></td>
                     </tr>
                 {% endfor %}
             </table>
@@ -38,6 +42,12 @@
             <a href="{% url 'main:add_item' %}">
                 <button>
                     Add New Item
+                </button>
+            </a>
+            <h5>Sesi terakhir login: {{ last_login }}</h5>
+            <a href="{% url 'main:logout' %}">
+                <button>
+                    Logout
                 </button>
             </a>
         </div>
