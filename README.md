@@ -2,10 +2,15 @@
 
 ## **Daftar Isi**:
 
-- [**Tugas 1**](#tugas-1)
-- [**Tugas 2**](#tugas-2)
-- [**Tugas 3**](#tugas-3)
-
+- [**Pemrograman Berbasis Platform**](#pemrograman-berbasis-platform)
+  - [**Daftar Isi**:](#daftar-isi)
+  - [**Tugas 1**](#tugas-1)
+  - [**Tugas 2**](#tugas-2)
+    - [**Implementasi Model-View-Template (MVT) pada Django**](#implementasi-model-view-template-mvt-pada-django)
+  - [**Tugas 3**](#tugas-3)
+    - [**Implementasi Form dan Data Delivery pada Django**](#implementasi-form-dan-data-delivery-pada-django)
+  - [**Tugas 4**](#tugas-4)
+    - [**Implementasi Autentikasi, Session, dan Cookies pada Django**](#implementasi-autentikasi-session-dan-cookies-pada-django)
 ---
 ## **Tugas 1**
 
@@ -67,6 +72,8 @@ Referensi:
 ---
 
 ## **Tugas 3**
+
+### **Implementasi Form dan Data Delivery pada Django**
 
 **Apa perbedaan antara form POST dan form GET dalam Django?**
 - Terdapat beberapa perbedaan anatara form POST dan form GET di Django. 
@@ -133,20 +140,54 @@ Referensi:
 
 ## **Tugas 4**
 
+### **Implementasi Autentikasi, Session, dan Cookies pada Django**
+
 **Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?**
-- Django UserCreationForm adalah form yang sudah dibuat oleh django untuk membuat user baru. UserCreationForm memiliki field username, password1, dan password2. UserCreationForm memiliki kelebihan yaitu mudah digunakan karena sudah dibuat oleh django dan dapat digunakan untuk membuat user baru. UserCreationForm memiliki kekurangan yaitu tidak dapat digunakan untuk membuat user dengan field yang lebih banyak seperti email, nama, dan lain-lain.
+- Django UserCreationForm adalah form yang sudah dibuat oleh django untuk membuat user baru pada aplikasi web yang dibuat dan UserCreationForm mewarisi ModelForm. UserCreationForm memiliki field username, password1, dan password2(konfirmasi password). 
+- Kelebihan dari UserCreationForm adalah mudah digunakan karena sudah dibuat builtin oleh django dan dapat digunakan untuk membuat user baru. Kelebihan kedua adalah dapat menambahkan field baru hanya dengan membuat anak class dari UserCreationForm.
+-  UserCreationForm memiliki kekurangan yaitu tidak dapat digunakan untuk membuat user dengan field yang lebih banyak seperti email, nama, dan lain-lain dan jika ingin membuat field baru maka harus membuat anak class dari UserCreationForm. Kekurangan kedua adalah sulit untuk dimaintain karena UserCreationForm sulit untuk dikustomisasi.
+
+Referensi : 
+
+- [https://www.javatpoint.com/django-usercreationform](https://www.javatpoint.com/django-usercreationform)
+- 
 
 **Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting**
-- Autentikasi adalah proses untuk memverifikasi identitas user yang ingin mengakses aplikasi. Autentikasi dapat dilakukan dengan username dan password atau dengan token. Autentikasi penting karena dapat membatasi user yang dapat mengakses aplikasi.
+- Autentikasi Django adalah proses untuk memverifikasi user yang ingin mengakses aplikasi web. Jadi django akan mengecek apakah user sudah terdaftar di database atau belum. Autentikasi dapat dilakukan dengan username dan password atau dengan token. Dalam authentisikasi django mendukung akun user, grup user, permissions, proses cookie based. Autentikasi penting karena dapat membatasi user yang dapat mengakses aplikasi web.
 
-- Otorisasi adalah proses untuk memverifikasi hak akses user yang telah terautentikasi. Otorisasi dapat dilakukan dengan mengecek permission yang dimiliki user. Otorisasi penting karena dapat membatasi user yang telah terautentikasi untuk mengakses fitur-fitur yang ada di aplikasi.
+- Otorisasi adalah proses untuk memverifikasi hak akses user yang telah terautentikasi oleh django. Jadi django akan mengecek tingkat akses dari user di database. Otorisasi dapat dilakukan dengan mengecek permission yang dimiliki user yaitu fitur yang dapat diakses oleh user. Otorisasi penting karena dapat membatasi user yang telah terautentikasi untuk mengakses fitur-fitur yang ada di aplikasi web agar pengakses aplikasi web tidak melakukan hal yang tidak bertanggung jawab terhadap suatu fitur.
+
+Referensi :
+- [https://frontegg.com/blog/django-authentication](https://frontegg.com/blog/django-authentication)
+- [https://docs.djangoproject.com/en/4.2/topics/auth/default/](https://docs.djangoproject.com/en/4.2/topics/auth/default/)
 
 **Apa itu *cookies* dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?**
-- Cookies adalah data yang disimpan di browser user yang dapat digunakan untuk menyimpan data yang dibutuhkan untuk aplikasi web. Cookies dapat digunakan untuk menyimpan data yang dibutuhkan untuk aplikasi web seperti data login, data keranjang belanja, dan lain-lain. Django menggunakan cookies untuk mengelola data sesi pengguna dengan menyimpan session id di cookies. Session id digunakan untuk mengidentifikasi user yang telah terautentikasi dan mengakses aplikasi web.
+- Cookies adalah data teks yang disimpan di browser atau penyimpanan lokal yang dapat digunakan untuk menyimpan data yang dibutuhkan untuk aplikasi web untuk mengidentifikasi komputer ketika mengakses website. Cookies dapat digunakan untuk menyimpan data yang dibutuhkan untuk aplikasi web seperti data login, data keranjang belanja, dan lain-lain. 
+- Django menggunakan cookies untuk mengelola data sesi pengguna dengan menyimpan session id di cookies dengan anonim atau terenkripsi. Session pada django akan menyimpan data di server dan mengembalikan cookies yang berupa session id.  Session id digunakan untuk mengidentifikasi user yang telah terautentikasi dan mengakses aplikasi web.
+
+Referensi: 
+- [https://www.kaspersky.com/resource-center/definitions/cookies](https://www.kaspersky.com/resource-center/definitions/cookies)
+- [https://www.kaspersky.com/resource-center/definitions/cookies](https://www.kaspersky.com/resource-center/definitions/cookies)
 
 **Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?**
-- Penggunaan cookies aman secara default dalam pengembangan web karena cookies hanya dapat diakses oleh server yang membuat cookies tersebut. Namun, terdapat risiko potensial yang harus diwaspadai yaitu cookies dapat digunakan untuk melacak user dan cookies dapat digunakan untuk menyimpan data yang tidak aman seperti data login.
+- Penggunaan cookies aman secara default dalam pengembangan web karena cookies hanya dapat diakses oleh server yang membuat cookies tersebut dan cookies hanya menyimpan data seperti history browsing, website permissions, dan pengaturan website. 
+- Namun, terdapat risiko potensial yang harus diwaspadai yaitu cookies dapat digunakan untuk melacak user dan cookies dapat digunakan untuk menyimpan data yang tidak aman seperti data login dan session id misal pada django sehingga kriminal dapat berpura pura menjadi user. 
+- Cookies dapat dibajak oleh kriminal untuk mendapatkan akses pada data browser. Kriminal dapat menggunakan cookies untuk mendapatkan data login dan mengakses akun user karena data cookies dapat diambil ketika terjadi transfer antara server dan browser.
+
+Referensi :
+- [https://allaboutcookies.org/what-is-a-cookie-file#:~:text=These%20are%20small%20pieces%20of,access%20to%20your%20browsing%20data.](https://allaboutcookies.org/what-is-a-cookie-file#:~:text=These%20are%20small%20pieces%20of,access%20to%20your%20browsing%20data.)
+- [https://www.kaspersky.com/resource-center/definitions/cookies](https://www.kaspersky.com/resource-center/definitions/cookies)
 
 **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
-- [1]Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
-  - 
+- [1] Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+  - Membuat fungsi baru yaitu registrasi, login_user, logout_user. 
+  - pada fungsi register, menggunakna UserCreationForm() lalu memastikan jika request method adalah POST maka akan membuat UserCreationForm dengan POST. Jika input yang di isi pada form valid maka akan membuat user baru dan user akan disimpan.
+  - pada fungsi login_user, memastikan jika request method adalah POST lalu meminta isian dari form dengan tag username dan password dimasukkan ke variable masing masing. Setelah itu dilakukan authenticate dengan username dan password yang dimasukkan. Jika user terautentikasi maka akan dilakukan login dengan login(request, user) dan mengembalikan redirect ke halaman utama atau halaman main.
+  - pada fungsi logout_user, menggunakan library logout request lalu mengembalikan redirect ke halaman login dan menghapus session atau cookies.
+- [2] Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+- [3]  Menghubungkan model Item dengan User.
+  - Memodifikasi model Item dengan menambahkan field user dengan ForeignKey ke model User. Model User didapat dari library django.contrib.auth.models. Model ini membolehkan nilai field user untuk null dan blank.
+- [4] Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+- [5] Melakukan add-commit-push ke GitHub.
+- [6] Tambahkan tombol dan fungsi untuk menambahkan amount suatu objek sebanyak satu dan tombol untuk mengurangi jumlah stok suatu objek sebanyak satu.
+- [7] Tambahkan tombol dan fungsi untuk menghapus suatu objek dari inventory.
