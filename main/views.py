@@ -20,7 +20,8 @@ def main_view(request):
 
     context = {
         "nama_aplikasi": "Inventory Pesawat",
-        "nama": request.user.username,
+        "nama": "Thirza Ahmad Tsaqif",
+        "pengguna_login" : request.user.username,
         "class": "PBP E",
         "inventory" : items,
         "jumlah_item": len(items),
