@@ -24,15 +24,15 @@
             
                 {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
             
-                {% for item in Inventory %}
+                {% for item in inventory %}
                     <tr>
                         <td>{{item.name}}</td>
                         <td>{{item.amount}}</td>
-                        <td><button><a href="{% url 'main:add_amount' item.id %}">Add Amount</a></button></td>
+                        <td><a href="{% url 'main:add_amount' item.id %}"><button>Add Amount</button></td>
                         <td>{{item.description}}</td>
                         <td>{{item.engine}}</td>
                         <td>{{item.winglet}}</td>
-                        <td><button><a href="{% url 'main:delete_data' item.id %}">Delete</a></button></td>
+                        <td><a href="{% url 'main:delete_data' item.id %}"><button>Delete Data</button></td>
                     </tr>
                 {% endfor %}
             </table>
