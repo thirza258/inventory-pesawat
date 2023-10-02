@@ -11,6 +11,7 @@
     - [**Implementasi Form dan Data Delivery pada Django**](#implementasi-form-dan-data-delivery-pada-django)
   - [**Tugas 4**](#tugas-4)
     - [**Implementasi Autentikasi, Session, dan Cookies pada Django**](#implementasi-autentikasi-session-dan-cookies-pada-django)
+  - [**Tugas 5**](#tugas-5)
 ---
 ## **Tugas 1**
 
@@ -196,3 +197,38 @@ Referensi :
   - Menambahkan kolom baru yaitu add amount dan menjadikan button sebagai isi dari kolom yang akan menambahkan amount ke item. Yaitu dengan menambahkan fungsi add_amount di views.py dengan mempassing parameter id dari item lalu mengambil amount dari item dan ditambahkan satu lalu di simpan atau di `save()`, menambahkan path add_amount di urls.py.
 - [7] Tambahkan tombol dan fungsi untuk menghapus suatu objek dari inventory.
   - Menambahkan kolom baru yaitu delete_data di tabel dan menjadikan button sebagai isi dari delete data. Lalu membuat fungsi delete_data di views.py dengan mengambil parameter id lalu item di minta berdasarkan id lalu item di `delete()` lalu menambahkan path delete_data di urls.py.
+
+---
+## **Tugas 5**
+- ## **Desain Web menggunakan HTML, CSS dan Framework CSS**
+
+- **Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya**
+  - Element selector, adalah selector yang digunakan untuk memilih elemen HTML berdasarkan nama elemen. Element selector ditandai dengan nama elemen, seperti h1, p, div, span, dll. Element selector akan memilih semua elemen dengan nama elemen yang ditentukan karena bersifat umum. Element selector lebih baik digunakan ketika membutuhkan styling yang sama untuk elemen elemen yang sama. Contohnya pada melakukan pewarnaan latar belakang pada element utama seperti header, body, dan footer. Element selector lebih baik digunakan pada kasus ini karena akan memilih semua elemen yang sama dan akan memudahkan dalam melakukan styling karena dalam pewarnaan latar belakang adalah hal yang memerlukan styling secara umum. 
+  - ID selector, adalah selector yang memilih elemen berdasarkan id elemen. ID dalam html ditandai dengan `id="nama_id"`. ID selector akan memilih elemen dengan id yang ditentukan. ID selector ditandai dengan tanda `#nama_id`. ID selector melakukan styling pada id elemen di html dan karena id elemen di html bersifat unik maka ID selector akan memilih elemen yang unik. ID selector lebih baik digunakan ketika membutuhkan styling yang berbeda untuk elemen yang berbeda. Contohnya pada melakukan styling pada elemen yang unik juga di html misalnya seperti gambar atau carousel pada halaman depan website. Gambar atau carousel pada halaman depan website hanya berjumlah 1 dan ini lebih baik menggunakan id dan id selector untuk melakukan styling karena bersifat khusus pada elemen yang unik.
+  - Class selector, adalah selector yang memilih elemen berdasarkan class elemen. Class dalam html ditandai dengan `class="nama_class"`. Class selector akan memilih elemen pada class yang ditentukan. Class selector ditandai dengan `.nama_class`. Class selector akan melakukan styling pada class elemen di html. Class pada html bersifat mengkelompokan sesuatu yang sama atau memiliki kesamaan. Contohnya pada melakukan styling pada button di html. Button di html biasanya ada banyak dan memiliki kesamaan. Jadi lebih baik menggunakan class selector pada button karena memiliki kesamaan dan akan memudahkan dalam melakukan styling.
+
+Referensi:
+- [https://stackoverflow.com/questions/46924587/html-id-vs-class-best-practice](https://stackoverflow.com/questions/46924587/html-id-vs-class-best-practice)
+
+- **Jelaskan HTML5 Tag yang kamu ketahui.**
+ - <h1>,<h2>,<h3>,<h4>,<h5>, adalah tag yang digunakan untuk membuat judul dan subjudul pada halaman website. Tag ini memiliki level yang berbeda dan semakin besar levelnya maka semakin kecil ukuran fontnya.
+ - <p> adalah tag yang digunakan untuk membuat paragraf atau tulisan atau kalimat pada halaman website. Tag ini akan membuat paragraf baru setelah tag ini dan dapat diisi dengan paragraf yang panjang dan website akan membuat baris baru jika paragraf sudah penuh.
+ - <div> adalah tag yang digunakan untuk melakukan pembagian suatu halaman website menjadi bagian bagian. Pada kasus umum, tag ini digunakan untuk membuat header, body, navbar, footer, dan lain lain. Tag ini digunakan untuk diisi dengan tag lainnya.
+ - <script> adalah tag yang digunakan untuk melakukan penambahan scripting javascript pada halaman website untuk melakan logic dari website.
+ - <style> adalah tag yang digunakan untuk menambahkan desain pada halaman website dengan menggunakan css untuk membuat website menjadi lebih menarik dan tervisualisasi.
+ - <link> adalah tag yang digunakan untuk menambahkan link atau memindahkan tujuan ke halaman website dengan `href`. Tag ini digunakan untuk menambahkan link ke css, javascript, dan lain lain. 
+ - <title> adalah tag yang digunakan untuk menambahkan judul atau nama website pada halaman website yang akan ditampilkan pada tab browser.
+
+- **Jelaskan perbedaan antara margin dan padding.**
+  - Margin adalah menambahkan ruang diluar atau sekitar element. Margin digunakan untuk melakukan perpindahan elemen ke semua arah. Margin sama seperti menambahkan elemen disamping elemen untuk memindahkan namun elemen tersebut adalah elemen kosong atau tranparan. Jadi diantara margin itu tidak bisa menambahkan elemen dan akan mendorong elemen biasa disampingnya.
+  - Padding adalah menambahkan ruang didalam element(elemen2). Padding digunakan untuk melakukan perpindahan elemen(elemen1) didalam elemen(elemen2) itu sendiri untuk melihat bagaimana lokasi elemen(elemen1) itu berada pada didalam elemen(elemen2) itu. Padding akan membesarkan atau mengecilkan elemen(elemen1) didalam elemen(elemen2) itu sendiri. 
+
+Referensi: 
+- [https://www.geeksforgeeks.org/css-padding-vs-margin/](https://www.geeksforgeeks.org/css-padding-vs-margin/)
+
+- **Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+ -  Bootstrap adalah salah satu framework CSS yang memiliki alat untuk responsive web design, sistem grid, dan komponen yang sudah jadi seperti buttons, form, card, dan navbar. Tailwind adlah salah satu framework CSS yang memiliki alat untuk melakukan responsive web design dengan low level dan dapat dikustomisasi sendiri. Tailwind menawarkan utility class yang dapat digunakan untuk melakukan styling.
+ -  Bootstrap lebih baik digunakan ketika ingin membuat website dengan solusi yang konsisten, siap jadi, dan mudah digunakan karena sudah memiliki komponen untuk semua skenario dan menghemat waktu. Tailwind lebih baik digunakan ketika ingin membuat website dengan solusi yang dapat dikustomisasi dan memiliki kontrol yang lebih besar. Tailwind juga lebih baik digunakan ketika ingin membuat website dengan desain yang unik dan tidak biasa karena kekuatan kustomisasinya yang mencangkup seluruh aspek desain.
+
+Referensi :
+- [https://www.linkedin.com/advice/3/what-pros-cons-using-bootstrap-vs-tailwind-responsive](https://www.linkedin.com/advice/3/what-pros-cons-using-bootstrap-vs-tailwind-responsive#:~:text=Generally%2C%20Bootstrap%20is%20a%20great,every%20aspect%20of%20web%20design.)
