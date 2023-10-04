@@ -10,8 +10,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import datetime
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.views.generic import UpdateView
+
 
 # Create your views here.
 @login_required(login_url='/login')
