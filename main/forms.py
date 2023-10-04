@@ -8,7 +8,7 @@ class ItemForm(ModelForm):
 
     class Meta:
         model = Item
-        fields = ['user', 'name', 'amount', 'description', 'engine', 'winglet']
+        fields = ['user', 'name', 'amount', 'description', 'engine', 'winglet', 'image']
         widget = {
             'user': forms.Select(attrs={'class': 'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control','style': 'border-color: blue;',}),
@@ -16,4 +16,5 @@ class ItemForm(ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control'}),
             'engine': forms.Select(attrs={'class': 'form-control'}),
             'winglet': forms.CheckboxInput(attrs={'class': 'form-control'}),
+            'image': forms.URLInput(attrs={'class': 'form-control'}),
         }

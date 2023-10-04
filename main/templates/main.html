@@ -22,71 +22,24 @@
             <a class="nav-link" href="{% url 'main:logout' %}">Logout</a>
         </li>
         
-        <li class="nav-item text-center">
-            <a class="nav-link" href="#"><div class="text-center">{{name}}</div></a>
-        </li>
+        
         </ul>
-        <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <div class="d-none d-md-block">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" style="margin-top: 6px">
+                    <svg class="bi bi-person" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
+                    </svg>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="#"><div class="text-center">{{pengguna_login}}</div></a>
+                </li>
+            </ul>
+            
+        </div>
     </div>
     </div>
 </nav>    
-<div>
-    <h1>{{nama_aplikasi}}</h1>
-    <div>
-        <p>Nama : {{nama}}</p>
-        <p>Class : {{class}}</p>
-        <p>Sedang Login : {{pengguna_login}}</p>
-    </div>
-    <div>
-        <p> Terdapat {{jumlah_item}} pesawat yang terdaftar pada aplikasi Inventory ini </p>
-    </div>
-    <div>
-           <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Add Amount</th>
-                    <th>Description</th>
-                    <th>Engine Type</th>
-                    <th>Have Winglet</th>
-                    <th>Delete Item</th>
-                </tr>
-            
-                {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-            
-                {% for item in inventory %}
-                    <tr>
-                        <td>{{item.name}}</td>
-                        <td>{{item.amount}}</td>
-                        <td><a href="{% url 'main:add_amount' item.id %}"><button>Add Amount</button></td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.engine}}</td>
-                        <td>{{item.winglet}}</td>
-                        <td><a href="{% url 'main:delete_data' item.id %}"><button>Delete Data</button></td>
-                    </tr>
-                {% endfor %}
-            </table>
-            
-            <br />
-            
-            <a href="{% url 'main:add_item' %}">
-                <button>
-                    Add New Item
-                </button>
-            </a>
-            <h5>Sedang Login {{pengguna_login}} di waktu {{ last_login }}</h5>
-            <a href="{% url 'main:logout' %}">
-                <button>
-                    Logout
-                </button>
-            </a>
-        </div>
-    </div>
-
-
     <header class="header" style="margin-top: -4px;margin-bottom: -2px;padding-bottom: 0px;">
         <div class="header-container" id="image-header" >
             <div class="container">
@@ -104,36 +57,54 @@
                 <p class="w-lg-50"> Terdapat {{jumlah_item}} pesawat yang terdaftar pada aplikasi Inventory ini</p>
             </div>
         </div>
+
         {% for item in inventory %}
-        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-            <div class="col">
-                <div class="card">
-                    <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" />
-                    <div class="card-body p-4">
-                        <h4 class="card-title">{{ item.name }}</h4>
+        <div class="container">
+            <div class="row" style="margin-top: 109px;">
+                <div class="col-md-6"><div id="image-model"/></div></div>
+                <div class="col-md-6">
+                    <div class="card" style="margin-top: 38px;">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ item.name }}</h4>
                         <p class="card-text">{{ item.description }}</p>
                             <div>
                                 <p class="fx-bold mb-0">Jumlah Tersimpan : {{ item.amount }}</p>
                                 <p class="text-muted mb-0">Tipe Engine : {{ item.engine }}</p>
                                 <p class="text-muted mb-0">Winglet : {{ item.winglet }}</p>
+                                <div class="dropdown" id="button_dropdown" style="margin-top: 6px">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="{% url 'main:add_amount' item.id %}">Add Amount</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'main:delete_data' item.id %}">Delete Data</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+        </div>  
+        {% endfor %}
+            
+
         <section class="py-4 py-xl-5">
             <div class="container">
                 <div class="bg-dark border rounded border-0 border-dark overflow-hidden">
                     <div class="row g-0">
                         <div class="col-md-6">
                             <div class="text-white p-4 p-md-5">
-                                <h2 class="fw-bold text-white mb-3">Biben dum fringi dictum, augue purus</h2>
-                                <p class="mb-4">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                                <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a><a class="btn btn-light btn-lg" role="button" href="#">Button</a></div>
+                                <h2 class="fw-bold text-white mb-3">Segera Daftarkan Pesawat Anda</h2>
+                                <p class="mb-4">Pesawat anda akan disimpan dengan aman dan terawat, memastikan bahwa ia siap untuk penerbangan selanjutnya dengan keamanan dan kualitas terbaik.</p>
+                                <div class="my-3">
+                                    <a class="btn btn-primary btn-lg me-2" role="button" href="{% url 'main:add_item' %}">Tambah Pesawat</a>
                             </div>
                         </div>
-                        <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img class="w-100 h-100 fit-cover" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" /></div>
+                        <div class="col-md-6 order-first order-md-last">
+                            <div id="image-add"/>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -167,17 +138,11 @@
                             <li><a class="link-secondary" href="#">Benefits</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 text-center text-lg-start d-flex flex-column align-items-center order-first align-items-lg-start order-lg-last item social">
-                        <div class="fw-bold d-flex align-items-center mb-2"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center bs-icon me-2"><svg class="bi bi-bezier" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"></path>
-                                    <path d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z"></path>
-                                </svg></span><span>Brand</span></div>
-                        <p class="text-muted copyright">Sem eleifend donec molestie, integer quisque orci aliquam.</p>
-                    </div>
+                    
                 </div>
                 <hr />
                 <div class="d-flex justify-content-between align-items-center pt-3">
-                    <p class="text-muted mb-0">Copyright © 2023 Brand</p>
+                   
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item"><svg class="bi bi-facebook" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
@@ -194,5 +159,5 @@
         </footer>
     </footer>
 
-    
+        
     {% endblock content %}

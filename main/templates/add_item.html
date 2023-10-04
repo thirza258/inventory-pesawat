@@ -74,10 +74,18 @@
                                 {{ form.winglet }}
                                 <label class="form-check-label" for="formCheck-1" style="margin-left: 5px">Winglet</label></div>
                             </div>
-                        </form>
-                        <div></div>
-                        <form method="post">
-                            <div><button class="btn btn-primary d-block w-100" type="submit" style="margin-top: 67px;">Send </button></div>
+                            <div class="mb-3" style="margin-bottom: 24px;">
+                                <label class="form-label">
+                                    Image Url
+                                </label>
+                                <div style="display:block">
+                                    {{ form.image }}
+                                </div>
+                            <div>
+                                <div>
+                                    <button class="btn btn-primary d-block w-100" type="submit" style="margin-top: 67px;">
+                                    Send </button>
+                                </div>
                         </form>
                     </div>
                 </div>

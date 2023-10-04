@@ -219,6 +219,9 @@ Referensi:
  - <link> adalah tag yang digunakan untuk menambahkan link atau memindahkan tujuan ke halaman website dengan `href`. Tag ini digunakan untuk menambahkan link ke css, javascript, dan lain lain. 
  - <title> adalah tag yang digunakan untuk menambahkan judul atau nama website pada halaman website yang akan ditampilkan pada tab browser.
 
+Referensi :
+- [https://www.tutorialspoint.com/html5/html5_tags.htm](https://www.tutorialspoint.com/html5/html5_tags.htm)
+
 - **Jelaskan perbedaan antara margin dan padding.**
   - Margin adalah menambahkan ruang diluar atau sekitar element. Margin digunakan untuk melakukan perpindahan elemen ke semua arah. Margin sama seperti menambahkan elemen disamping elemen untuk memindahkan namun elemen tersebut adalah elemen kosong atau tranparan. Jadi diantara margin itu tidak bisa menambahkan elemen dan akan mendorong elemen biasa disampingnya.
   - Padding adalah menambahkan ruang didalam element(elemen2). Padding digunakan untuk melakukan perpindahan elemen(elemen1) didalam elemen(elemen2) itu sendiri untuk melihat bagaimana lokasi elemen(elemen1) itu berada pada didalam elemen(elemen2) itu. Padding akan membesarkan atau mengecilkan elemen(elemen1) didalam elemen(elemen2) itu sendiri. 
@@ -232,3 +235,10 @@ Referensi:
 
 Referensi :
 - [https://www.linkedin.com/advice/3/what-pros-cons-using-bootstrap-vs-tailwind-responsive](https://www.linkedin.com/advice/3/what-pros-cons-using-bootstrap-vs-tailwind-responsive#:~:text=Generally%2C%20Bootstrap%20is%20a%20great,every%20aspect%20of%20web%20design.)
+
+- **Checklist untuk tugas ini adalah sebagai berikut:**
+  - **Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut**
+    - **[1]Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.**
+      - Mwlakukan kustomisasi halaman login yaitu menggunakan login form dari bootstrap. Formnya dimasukkan ke suatu Container dan menambahkan gambar disamping login formnya. Untuk halaman register membagi halaman menjadi 2 bagian yaitu bagian kiri untuk melakukan halman register dan bagin kanan berisi guidelines tentang bagaimana syarat username dan password dari melakukan register di aplikasi ini. Untuk halaman tambah inventori dengan membuat form berisi form model Item untuk semua atribut model dan sama seperti form lainnya semua form dimasukkan ke sebuah container dan melakukan pembagian `div` yang berisi label dari form dan field form. 
+    - **[2] Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.**
+      - Melakukan pembagian 1 row dan 2 column dengan kolom pertama adalah kolom yang berisi gambar dari item dan kolom kedua berisi card yang berisi informasi dari setiap objek. Card ini berisi nama, amount, engine, winglet dan description dari objek. Card ini juga memiliki button untuk menambahkan amount dan menghapus objek.
