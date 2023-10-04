@@ -210,7 +210,7 @@ Referensi :
 Referensi:
 - [https://stackoverflow.com/questions/46924587/html-id-vs-class-best-practice](https://stackoverflow.com/questions/46924587/html-id-vs-class-best-practice)
 
-- **Jelaskan HTML5 Tag yang kamu ketahui.**
+**Jelaskan HTML5 Tag yang kamu ketahui.**
  - `<h1>,<h2>,<h3>,<h4>,<h5>`, adalah tag yang digunakan untuk membuat judul dan subjudul pada halaman website. Tag ini memiliki level yang berbeda dan semakin besar levelnya maka semakin kecil ukuran fontnya.
  - `<p>` adalah tag yang digunakan untuk membuat paragraf atau tulisan atau kalimat pada halaman website. Tag ini akan membuat paragraf baru setelah tag ini dan dapat diisi dengan paragraf yang panjang dan website akan membuat baris baru jika paragraf sudah penuh.
  - `<div>` adalah tag yang digunakan untuk melakukan pembagian suatu halaman website menjadi bagian bagian. Pada kasus umum, tag ini digunakan untuk membuat header, body, navbar, footer, dan lain lain. Tag ini digunakan untuk diisi dengan tag lainnya.
@@ -222,21 +222,21 @@ Referensi:
 Referensi :
 - [https://www.tutorialspoint.com/html5/html5_tags.htm](https://www.tutorialspoint.com/html5/html5_tags.htm)
 
-- **Jelaskan perbedaan antara margin dan padding.**
+**Jelaskan perbedaan antara margin dan padding.**
   - Margin adalah menambahkan ruang diluar atau sekitar element. Margin digunakan untuk melakukan perpindahan elemen ke semua arah. Margin sama seperti menambahkan elemen disamping elemen untuk memindahkan namun elemen tersebut adalah elemen kosong atau tranparan. Jadi diantara margin itu tidak bisa menambahkan elemen dan akan mendorong elemen biasa disampingnya.
   - Padding adalah menambahkan ruang didalam element(elemen2). Padding digunakan untuk melakukan perpindahan elemen(elemen1) didalam elemen(elemen2) itu sendiri untuk melihat bagaimana lokasi elemen(elemen1) itu berada pada didalam elemen(elemen2) itu. Padding akan membesarkan atau mengecilkan elemen(elemen1) didalam elemen(elemen2) itu sendiri. 
 
 Referensi: 
 - [https://www.geeksforgeeks.org/css-padding-vs-margin/](https://www.geeksforgeeks.org/css-padding-vs-margin/)
 
-- **Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+**Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
  -  Bootstrap adalah salah satu framework CSS yang memiliki alat untuk responsive web design, sistem grid, dan komponen yang sudah jadi seperti buttons, form, card, dan navbar. Tailwind adlah salah satu framework CSS yang memiliki alat untuk melakukan responsive web design dengan low level dan dapat dikustomisasi sendiri. Tailwind menawarkan utility class yang dapat digunakan untuk melakukan styling.
  -  Bootstrap lebih baik digunakan ketika ingin membuat website dengan solusi yang konsisten, siap jadi, dan mudah digunakan karena sudah memiliki komponen untuk semua skenario dan menghemat waktu. Tailwind lebih baik digunakan ketika ingin membuat website dengan solusi yang dapat dikustomisasi dan memiliki kontrol yang lebih besar. Tailwind juga lebih baik digunakan ketika ingin membuat website dengan desain yang unik dan tidak biasa karena kekuatan kustomisasinya yang mencangkup seluruh aspek desain.
 
 Referensi :
 - [https://www.linkedin.com/advice/3/what-pros-cons-using-bootstrap-vs-tailwind-responsive](https://www.linkedin.com/advice/3/what-pros-cons-using-bootstrap-vs-tailwind-responsive#:~:text=Generally%2C%20Bootstrap%20is%20a%20great,every%20aspect%20of%20web%20design.)
 
-- **Checklist untuk tugas ini adalah sebagai berikut:**
+**Checklist untuk tugas ini adalah sebagai berikut:**
   - **Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut**
     - **[1]Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.**
       - Mwlakukan kustomisasi halaman login yaitu menggunakan login form dari bootstrap. Formnya dimasukkan ke suatu Container dan menambahkan gambar disamping login formnya. Untuk halaman register membagi halaman menjadi 2 bagian yaitu bagian kiri untuk melakukan halman register dan bagin kanan berisi guidelines tentang bagaimana syarat username dan password dari melakukan register di aplikasi ini. Untuk halaman tambah inventori dengan membuat form berisi form model Item untuk semua atribut model dan sama seperti form lainnya semua form dimasukkan ke sebuah container dan melakukan pembagian `div` yang berisi label dari form dan field form. 
