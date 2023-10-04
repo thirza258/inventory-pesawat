@@ -99,6 +99,15 @@ def add_amount(request, id):
     except Item.DoesNotExist:
         return JsonResponse({'error': 'Item not found'}, status=404)
 
+def sub_amount(request, id):
+    try:
+        item = Item.objects.get(pk=id)
+        item.amount -= 1
+        item.save()
+        return HttpResponseRedirect(reverse('main:main_view'))
+    except Item.DoesNotExist:
+        return JsonResponse({'error': 'Item not found'}, status=404)
+
 def delete_data(request, id):
     try:
         item = Item.objects.get(pk=id)
@@ -106,3 +115,4 @@ def delete_data(request, id):
         return HttpResponseRedirect(reverse('main:main_view'))
     except Item.DoesNotExist:
         return JsonResponse({'error': 'Item not found'}, status=404)
+

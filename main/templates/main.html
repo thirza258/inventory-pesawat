@@ -9,6 +9,7 @@
 
 <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary navbar-light bg-light shadow">
     <div class="container-fluid">
+        
     <a class="navbar-brand" href="#">Inventory Pesawat</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -62,7 +63,7 @@
         <div class="container">
             <div class="row" style="margin-top: 109px;">
                 <div class="col-md-6">
-                    <img src={{ item.image }} alt="Foto">
+                    <img src="{{ item.image }}">
                 </div>
                 <div class="col-md-6">
                     <div class="card" style="margin-top: 38px;" id="inventorys">
@@ -79,6 +80,7 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li><a class="dropdown-item" href="{% url 'main:add_amount' item.id %}">Add Amount</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'main:sub_amount' item.id %}">Sub Amount</a></li>
                                         <li><a class="dropdown-item" href="{% url 'main:delete_data' item.id %}">Delete Data</a></li>
                                     </ul>
                                 </div>
