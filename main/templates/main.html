@@ -61,9 +61,11 @@
         {% for item in inventory %}
         <div class="container">
             <div class="row" style="margin-top: 109px;">
-                <div class="col-md-6"><div id="image-model"/></div></div>
                 <div class="col-md-6">
-                    <div class="card" style="margin-top: 38px;">
+                    <img src={{ item.image }} alt="Foto">
+                </div>
+                <div class="col-md-6">
+                    <div class="card" style="margin-top: 38px;" id="inventorys">
                         <div class="card-body">
                             <h4 class="card-title">{{ item.name }}</h4>
                         <p class="card-text">{{ item.description }}</p>

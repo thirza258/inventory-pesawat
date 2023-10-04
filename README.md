@@ -211,13 +211,13 @@ Referensi:
 - [https://stackoverflow.com/questions/46924587/html-id-vs-class-best-practice](https://stackoverflow.com/questions/46924587/html-id-vs-class-best-practice)
 
 - **Jelaskan HTML5 Tag yang kamu ketahui.**
- - <h1>,<h2>,<h3>,<h4>,<h5>, adalah tag yang digunakan untuk membuat judul dan subjudul pada halaman website. Tag ini memiliki level yang berbeda dan semakin besar levelnya maka semakin kecil ukuran fontnya.
- - <p> adalah tag yang digunakan untuk membuat paragraf atau tulisan atau kalimat pada halaman website. Tag ini akan membuat paragraf baru setelah tag ini dan dapat diisi dengan paragraf yang panjang dan website akan membuat baris baru jika paragraf sudah penuh.
- - <div> adalah tag yang digunakan untuk melakukan pembagian suatu halaman website menjadi bagian bagian. Pada kasus umum, tag ini digunakan untuk membuat header, body, navbar, footer, dan lain lain. Tag ini digunakan untuk diisi dengan tag lainnya.
- - <script> adalah tag yang digunakan untuk melakukan penambahan scripting javascript pada halaman website untuk melakan logic dari website.
- - <style> adalah tag yang digunakan untuk menambahkan desain pada halaman website dengan menggunakan css untuk membuat website menjadi lebih menarik dan tervisualisasi.
- - <link> adalah tag yang digunakan untuk menambahkan link atau memindahkan tujuan ke halaman website dengan `href`. Tag ini digunakan untuk menambahkan link ke css, javascript, dan lain lain. 
- - <title> adalah tag yang digunakan untuk menambahkan judul atau nama website pada halaman website yang akan ditampilkan pada tab browser.
+ - `<h1>,<h2>,<h3>,<h4>,<h5>`, adalah tag yang digunakan untuk membuat judul dan subjudul pada halaman website. Tag ini memiliki level yang berbeda dan semakin besar levelnya maka semakin kecil ukuran fontnya.
+ - `<p>` adalah tag yang digunakan untuk membuat paragraf atau tulisan atau kalimat pada halaman website. Tag ini akan membuat paragraf baru setelah tag ini dan dapat diisi dengan paragraf yang panjang dan website akan membuat baris baru jika paragraf sudah penuh.
+ - `<div>` adalah tag yang digunakan untuk melakukan pembagian suatu halaman website menjadi bagian bagian. Pada kasus umum, tag ini digunakan untuk membuat header, body, navbar, footer, dan lain lain. Tag ini digunakan untuk diisi dengan tag lainnya.
+ - `<script>` adalah tag yang digunakan untuk melakukan penambahan scripting javascript pada halaman website untuk melakan logic dari website.
+ - `<style>` adalah tag yang digunakan untuk menambahkan desain pada halaman website dengan menggunakan css untuk membuat website menjadi lebih menarik dan tervisualisasi.
+ - `<link>` adalah tag yang digunakan untuk menambahkan link atau memindahkan tujuan ke halaman website dengan `href`. Tag ini digunakan untuk menambahkan link ke css, javascript, dan lain lain. 
+ - `<title>` adalah tag yang digunakan untuk menambahkan judul atau nama website pada halaman website yang akan ditampilkan pada tab browser.
 
 Referensi :
 - [https://www.tutorialspoint.com/html5/html5_tags.htm](https://www.tutorialspoint.com/html5/html5_tags.htm)

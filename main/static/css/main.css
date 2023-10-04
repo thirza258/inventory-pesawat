@@ -29,3 +29,7 @@
     width: 597px;
     height: 314px;
 }
+
+#inventorys:last-child {
+    background-color: #4477CE;
+}
