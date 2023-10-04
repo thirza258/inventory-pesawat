@@ -3,7 +3,6 @@
     background-size: cover;
     width: 100%;
     height: 100%;
-    opacity: 0.5;
     padding-bottom: 175px;
     margin-top: 3px;
     padding-top: 112px;
@@ -30,6 +29,12 @@
     height: 314px;
 }
 
-#inventorys:last-child {
-    background-color: #4477CE;
+img {
+    max-width: 597px;
+    max-height: 314px;
+    background-size: cover;
+}
+
+#inventorys {
+    background-color: #ffffff;
 }
