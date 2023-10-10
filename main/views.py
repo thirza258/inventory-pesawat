@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from main.forms import ItemForm
+from main.forms import ItemForm, ItemFromAutoUser
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from main.models import Item
 from django.core import serializers
@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import datetime
 from django.views.generic import UpdateView
+from django.views.decorators.csrf import csrf_exempt 
 
 
 # Create your views here.
@@ -115,4 +116,28 @@ def delete_data(request, id):
         return HttpResponseRedirect(reverse('main:main_view'))
     except Item.DoesNotExist:
         return JsonResponse({'error': 'Item not found'}, status=404)
+
+
+def get_item_json(request):
+    items = Item.objects.all()
+    return HttpResponse(serializers.serialize('json', items))
+
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == "POST":
+        user = request.user
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        engine = request.POST.get("engine")
+        winglet = request.POST.get("winglet")
+        image = request.POST.get("image")
+
+        item = Item(user=user, name=name, amount=amount, description=description, engine=engine, winglet=winglet, image=image)
+        item.save()
+
+        return HttpResponse("Created", status=201)
+    return HttpResponse("Failed", status=400)
+
+
 
