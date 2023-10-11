@@ -12,6 +12,9 @@
   - [**Tugas 4**](#tugas-4)
     - [**Implementasi Autentikasi, Session, dan Cookies pada Django**](#implementasi-autentikasi-session-dan-cookies-pada-django)
   - [**Tugas 5**](#tugas-5)
+  - [**Desain Web menggunakan HTML, CSS dan Framework CSS**](#desain-web-menggunakan-html-css-dan-framework-css)
+  - [**Tugas 6**](#tugas-6)
+    - [**JavaScript dan Asynchronous JavaScript**](#javascript-dan-asynchronous-javascript)
 ---
 ## **Tugas 1**
 
@@ -200,9 +203,9 @@ Referensi :
 
 ---
 ## **Tugas 5**
-- ## **Desain Web menggunakan HTML, CSS dan Framework CSS**
+## **Desain Web menggunakan HTML, CSS dan Framework CSS**
 
-- **Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya**
+**Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya**
   - Element selector, adalah selector yang digunakan untuk memilih elemen HTML berdasarkan nama elemen. Element selector ditandai dengan nama elemen, seperti h1, p, div, span, dll. Element selector akan memilih semua elemen dengan nama elemen yang ditentukan karena bersifat umum. Element selector lebih baik digunakan ketika membutuhkan styling yang sama untuk elemen elemen yang sama. Contohnya pada melakukan pewarnaan latar belakang pada element utama seperti header, body, dan footer. Element selector lebih baik digunakan pada kasus ini karena akan memilih semua elemen yang sama dan akan memudahkan dalam melakukan styling karena dalam pewarnaan latar belakang adalah hal yang memerlukan styling secara umum. 
   - ID selector, adalah selector yang memilih elemen berdasarkan id elemen. ID dalam html ditandai dengan `id="nama_id"`. ID selector akan memilih elemen dengan id yang ditentukan. ID selector ditandai dengan tanda `#nama_id`. ID selector melakukan styling pada id elemen di html dan karena id elemen di html bersifat unik maka ID selector akan memilih elemen yang unik. ID selector lebih baik digunakan ketika membutuhkan styling yang berbeda untuk elemen yang berbeda. Contohnya pada melakukan styling pada elemen yang unik juga di html misalnya seperti gambar atau carousel pada halaman depan website. Gambar atau carousel pada halaman depan website hanya berjumlah 1 dan ini lebih baik menggunakan id dan id selector untuk melakukan styling karena bersifat khusus pada elemen yang unik.
   - Class selector, adalah selector yang memilih elemen berdasarkan class elemen. Class dalam html ditandai dengan `class="nama_class"`. Class selector akan memilih elemen pada class yang ditentukan. Class selector ditandai dengan `.nama_class`. Class selector akan melakukan styling pada class elemen di html. Class pada html bersifat mengkelompokan sesuatu yang sama atau memiliki kesamaan. Contohnya pada melakukan styling pada button di html. Button di html biasanya ada banyak dan memiliki kesamaan. Jadi lebih baik menggunakan class selector pada button karena memiliki kesamaan dan akan memudahkan dalam melakukan styling.
@@ -239,6 +242,44 @@ Referensi :
 **Checklist untuk tugas ini adalah sebagai berikut:**
   - **Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut**
     - **[1]Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.**
-      - Mwlakukan kustomisasi halaman login yaitu menggunakan login form dari bootstrap. Formnya dimasukkan ke suatu Container dan menambahkan gambar disamping login formnya. Untuk halaman register membagi halaman menjadi 2 bagian yaitu bagian kiri untuk melakukan halman register dan bagin kanan berisi guidelines tentang bagaimana syarat username dan password dari melakukan register di aplikasi ini. Untuk halaman tambah inventori dengan membuat form berisi form model Item untuk semua atribut model dan sama seperti form lainnya semua form dimasukkan ke sebuah container dan melakukan pembagian `div` yang berisi label dari form dan field form. 
+      - Melakukan kustomisasi halaman login yaitu menggunakan login form dari bootstrap. Formnya dimasukkan ke suatu Container dan menambahkan gambar disamping login formnya. Untuk halaman register membagi halaman menjadi 2 bagian yaitu bagian kiri untuk melakukan halman register dan bagin kanan berisi guidelines tentang bagaimana syarat username dan password dari melakukan register di aplikasi ini. Untuk halaman tambah inventori dengan membuat form berisi form model Item untuk semua atribut model dan sama seperti form lainnya semua form dimasukkan ke sebuah container dan melakukan pembagian `div` yang berisi label dari form dan field form. 
     - **[2] Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.**
       - Melakukan pembagian 1 row dan 2 column dengan kolom pertama adalah kolom yang berisi gambar dari item dan kolom kedua berisi card yang berisi informasi dari setiap objek. Card ini berisi nama, amount, engine, winglet dan description dari objek. Card ini juga memiliki button untuk menambahkan amount dan menghapus objek.
+
+
+---
+
+## **Tugas 6**
+### **JavaScript dan Asynchronous JavaScript**
+
+**Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.**
+- asynchronous programming adalah pendekatan pemrograman yang tidak terikat pada protokol input output  yaitu dapat melakukan eksekusi program dengan cara paralel yang berarti program dieksekusi secara bersamaan dan tidak memerlukan program yang berjalan terlebih dahulu selesai dan tidak berjalan secara sequential tatau terurut.
+- synchronus programming adalah pendekatan pemrograman yang melakukan eksekusi secara urutan satu persatu dan prioritas task tidak bisa diinterupsi samapi task yang berjalan selesai. Setiap task harus menunggu task sebelumnya selesai baru dapat dijalankan.
+- asynchronus programming memiliki kecepatan eksekusi yang lebih baik karena dapat melakukan eksekusi secara bersamaan dan tidak memerlukan task sebelumnya selesai. Synchronus programming memiliki kecepatan eksekusi yang lebih lambat karena harus menunggu task sebelumnya selesai.
+- asynchronus programming membutuhkan lebih banyak memory karena harus menyimpan task yang belum selesai. Synchronus programming membutuhkan lebih sedikit memory karena tidak perlu menyimpan task yang belum selesai.
+- asynchronus programming lebih konkuren karena dapat melakukan eksekusi secara bersamaan. Synchronus programming tidak konkuren karena harus menunggu task sebelumnya selesai.
+- asynchronus programming memiliki kemungkinan besar terjadi overhead karena melakukan task secara bersamaan.Synchronus programming memiliki kemungkinan overhead yang lebih kecil karena tidak perlu menyimpan task yang belum selesai.
+
+Referensi :
+- [https://datamyte.com/synchronous-vs-asynchronous/](https://datamyte.com/synchronous-vs-asynchronous/)
+- [https://binus.ac.id/malang/2022/05/asynchronous-vs-synchronous-programming/](https://binus.ac.id/malang/2022/05/asynchronous-vs-synchronous-programming/)
+
+**Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.**
+- event driven programming adalah paradigma pemrograman yang jalannya program dikendalikan oleh suate event. Ada sebuah loop yang selalu mendengar terjadinya event. Jika terjadi event maka akan menjalankan fungsi yang terkait dengan event tersebut. 
+- Contoh penerapannya adalah aksi pengguna dalam aplikasi GUI yang diatur oleh mouse, keyboard, touchscreen,dan lain lain. Jika pengguna melakukan aksi dengan mouse yang menekan tombol pada button. Aksi menekan mouse pada button dinamakan event. Jika terjadi event maka akan menjalankan fungsi yang terkait dengan event tersebut yaitu fungsi yang akan menjalankan aksi yang terjadi ketika tombol button ditekan.
+  
+Referensi :
+- [https://en.wikipedia.org/wiki/Event-driven_programming](https://en.wikipedia.org/wiki/Event-driven_programming#:~:text=Event%2Ddriven%20programming%20is%20the,in%20USB%20device%20driver%20stacks)
+- [https://www.tutorialspoint.com/concurrency_in_python/concurrency_in_python_eventdriven_programming.htm](https://www.tutorialspoint.com/concurrency_in_python/concurrency_in_python_eventdriven_programming.htm)
+
+**Jelaskan penerapan asynchronous programming pada AJAX.**
+- Asynchronous programming pada AJAX adalah AJAX tidak menunggu respon dari server. Ketika asynchrounour request menjalankan JavaScript eerus melakukan eksekusi pada task lainnya sampai response dari server diterima. JavaScript dapat melanjutkan eksekusi programnya yang lain sehingga membuat halaman menjadi lebih responsif selama menunggu respon dari server.
+
+**Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.**
+- Fetch API pada javascript adalah permintaan layanan ke url yang akan menerima request untuk mengambil response resource berupa XML atau JSON. 
+- Penerapan Fetch API dari AJAX adalah melakukan permintaan HTTP request kepada server secara asynchronous. Pada AJAX, Fetch API menggunakan XMLHttpRequest untuk melakukan permintaan HTTP. 
+- Fetch API pada jquery adalah melakukan permintaan HTTP request kepada server secara asynchronous. Pada jquery, Fetch API menggunakan $.ajax() untuk melakukan permintaan HTTP dan permintaan ini terdapat pada library dari jquery. 
+- Fetch API pada AJAX memiliki kelebihan yaitu dapat melakukan permintaan HTTP request kepada server secara asynchronous dengan promise. Fetch API pada AJAX juga lebih ringan karena hanya mencangkup AJAX sehingga mengurangi overhead. Fetch API pada AJAX juga lebih modern karena pemrogaman asynchronous memiliki dukungan pada browser modern.
+- Fetch API pada jquery memiliki kelebihan yaitu sintaksnya yang lebih ringkas dan dapat dengan mudah dibaca. Library jquery juga didukung oleh sebagian besar browser. Library jquery juga memiliki fitur yang lebih lengkap dan lebih banyak.
+- Menurut saya teknologi yang lebih baik digunakan adalah Fetch API pada AJAX karena Fetch API pada AJAX lebih ringan, lebih modern, dan memiliki dukungan pada browser yang kita gunakan dan untuk tugas PBP tidak memerlukan banyak fitur.
+

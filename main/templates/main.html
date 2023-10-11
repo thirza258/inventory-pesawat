@@ -5,6 +5,7 @@
 
 {% load static %}
 
+
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
 <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary navbar-light bg-light shadow">
@@ -59,6 +60,32 @@
             </div>
         </div>
 
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Add Amount</th>
+                <th>Description</th>
+                <th>Engine Type</th>
+                <th>Have Winglet</th>
+                <th>Delete Item</th>
+            </tr>
+        
+            {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+        
+            {% for item in inventory %}
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.amount}}</td>
+                    <td><a href="{% url 'main:add_amount' item.id %}"><button>Add Amount</button></td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.engine}}</td>
+                    <td>{{item.winglet}}</td>
+                    <td><a href="{% url 'main:delete_data' item.id %}"><button>Delete Data</button></td>
+                </tr>
+            {% endfor %}
+        </table>
+        
         {% for item in inventory %}
         <div class="container">
             <div class="row" style="margin-top: 109px;">
@@ -92,6 +119,45 @@
         </div>  
         {% endfor %}
             
+        <div id="item_view">
+            <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Pesawat</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form" onsubmit="return false;">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="name" class="col-form-label">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="name"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="price" class="col-form-label">Amount</label>
+                                    <input type="number" class="form-control" id="amount" name="amount"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="col-form-label">Description:</label>
+                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="col-form-label">Engine:</label>
+                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#itemModal">Add Product by AJAX</button>
 
         <section class="py-4 py-xl-5">
             <div class="container">
@@ -163,5 +229,58 @@
         </footer>
     </footer>
 
+    <script>
+        async function getItems() {
+            return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+        }
+        
+        async function refreshItems() {
+            document.getElementById("item_view").innerHTML = ""
+            const items = await getItems()
+            let htmlString = ``
+            items.forEach((item) => {
+                htmlString += `<div class="container">
+                <div class="row" style="margin-top: 109px;">
+                    <div class="col-md-6">
+                        <img src="${ item.fields.image }">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card" style="margin-top: 38px;" id="inventorys">
+                            <div class="card-body">
+                                <h4 class="card-title">${ item.fields.name }</h4>
+                            <p class="card-text">${ item.fields.description }</p>
+                                <div>
+                                    <p class="fx-bold mb-0">Jumlah Tersimpan : ${ item.fields.amount }</p>
+                                    <p class="text-muted mb-0">Tipe Engine : ${ item.fields.engine }</p>
+                                    <p class="text-muted mb-0">Winglet : ${ item.fields.winglet }</p>
+                                    <div class="dropdown" id="button_dropdown" style="margin-top: 6px">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            })
+        
+            document.getElementById("item_view").innerHTML = htmlString
+        }
+        
+        function addItems() {
+            fetch("{% url 'main:add_item_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshItems)
+        
+            document.getElementById("form").reset()
+            return false
+        }
+        
+        refreshItems()
+    </script>
         
     {% endblock content %}
