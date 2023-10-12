@@ -156,7 +156,7 @@ def add_amount_ajax(request, id):
         item = get_object_or_404(Item, pk=id)
         item.amount += 1
         item.save()
-        return HttpResponse("Deleted", status=200)
+        return HttpResponse("Item Amount Added", status=200)
     except Item.DoesNotExist:
         return HttpResponse({'error': 'Item not found'}, status=404)
     
@@ -166,6 +166,6 @@ def reduce_amount_ajax(request, id):
         item = get_object_or_404(Item, pk=id)
         item.amount -= 1
         item.save()
-        return HttpResponse("Deleted", status=200)
+        return HttpResponse("Item Amount Reduced", status=200)
     except Item.DoesNotExist:
         return HttpResponse({'error': 'Item not found'}, status=404)
