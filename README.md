@@ -283,3 +283,127 @@ Referensi :
 - Fetch API pada jquery memiliki kelebihan yaitu sintaksnya yang lebih ringkas dan dapat dengan mudah dibaca. Library jquery juga didukung oleh sebagian besar browser. Library jquery juga memiliki fitur yang lebih lengkap dan lebih banyak.
 - Menurut saya teknologi yang lebih baik digunakan adalah Fetch API pada AJAX karena Fetch API pada AJAX lebih ringan, lebih modern, dan memiliki dukungan pada browser yang kita gunakan dan untuk tugas PBP tidak memerlukan banyak fitur.
 
+**Mengubah tugas 5 yang telah dibuat sebelumnya menjadi menggunakan AJAX.**
+ - **AJAX GET**
+    - **Ubahlah kode cards data item agar dapat mendukung AJAX GET.**
+      - Menambahkan versi dari AJAX GET dibawah card. Card ini ditambah melalui javascript dengan membuat div dengan id `item_view` di html. Lalu menambhahkan fungsi refreshItems di javascript. fungsi refreshItems adalah fungsi yang mengembalikan card dengan dukungan AJAX. 
+    - **Lakukan pengambilan task menggunakan AJAX GET.**
+      - Menambahkan fungsi `get_item_json` di views.py. fungsi ini akan mengembalikan bentuk json dari model di database berdasarkan user. Lalu mengganti card sebelumnya dengan card yang baru yang ada di javascript atau script. Card yang baru akan mengambil data dari `get_item_json` lalu masuk ke fungsi `refreshItems` yang akan menerjemahkan data json menjadi card yang baru.
+ - **AJAX POST**
+   - **Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item.**
+      - Menambahkan button di bawah modalpada file html. Button ini akan memunculkan modal untuk mengisi form dari model. `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>`. Button ini memunculkan modal dengan `data-bs-toggle="modal" data-bs-target="#exampleModal"`. Sebelumnya modal tersembunyi pada website karena memiliki atribut `aria-hidden="true"` .
+    - **Modal di-trigger dengan menekan suatu tombol pada halaman utama. Saat penambahan item berhasil, modal harus ditutup dan input form harus dibersihkan dari data yang sudah dimasukkan ke dalam form sebelumnya.**
+      - Menambahkan `document.getElementById("form").reset()` pada addItems di javascript untuk mereset form menjadi form kosong. 
+    - **Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.**
+      - membuat fungsi view baru di views.py. fungsi ini adalah `add_item_ajax` yang akan menggunakan request method **POST** lalu meminta data dari form yang telah diisi oleh user yaitu mengisi seluruh atribut model dari Item. Lalu mencocokan atribut yang diisi pada form dengan atribut model dan  menyimpan data tersebut ke database dengan `item.save()`. Lalu mengembalikan redirect ke halaman utama.
+    - **Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.**
+      - Menambahkan path `/create-ajax/` di urls.py yang mengarah ke fungsi view `add_item_ajax`.
+    - **Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.**
+      - Membuat fungsi javascript di script yang akan mengambil data dari form melalui url dari `add_item_ajax`. Lalu menggunakan method POST dan body dari addItems adalah FormData dan FormDatanya merupakan form di modal. Setelah form diisi akan merefresh Items dengan `refreshItems`.
+    - **Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.**
+      - Menambahkan fungsi `refreshItems` di javascript yang akan mengambil data dari `get_item_json` lalu mengubah card yang ada di halaman utama menjadi card yang baru. Card yang baru akan mengambil data dari `get_item_json` lalu masuk ke fungsi `refreshItems` yang akan menerjemahkan data json menjadi card yang baru. Lalu method ini hanya akan melakukan refresh pada Items daripada refresh keseluruhan.
+
+  - **Melakukan perintah collectstatic.**
+    - Menjalankan collect static untuk mengambil static file dari bootstrap dan jquery dan static file yang dibuat sendiri. Yaitu dengan menjalankan `python manage.py collectstatic`
+
+  - **Melakukan add-commit-push ke GitHub.**
+    -  Melakukan `git add .`. lalu melakukan commit dengan `git commit -m "Pengerjaan Tugas 6 menambahkan AJAX"` untuk menyimpan perubahan pada file atau aplikasi. Lalu melakukan push ke repository dengan `git push origin development` agar hasil dari tugas 6 dapat dilihat di github dan melakukan pull request di github untuk melakukan merge ke branch main.
+  - **Melakukan deployment ke PaaS PBP Fasilkom UI dan sertakan tautan aplikasi pada file README.md.**
+    - Menambahkan package `django-environ` di requirements.txt. Membuat file `Procfile` lalu menambahkan kode 
+      ```
+      release: django-admin migrate --noinput
+      web: gunicorn inventory.wsgi
+      ```
+      membuat folder baru bernama .github dan didalamnya ada folder workflows dan didalamnya ada file pbp-deploy.yml. Lalu menambahkan kode 
+      ```
+      name: Deploy
+
+      on:
+        push:
+          branches:
+            - main
+            - master
+
+      jobs:
+        Deployment:
+          if: github.ref == 'refs/heads/main'
+          runs-on: ubuntu-latest
+          steps:
+          - name: Cloning repo
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
+
+          - name: Push to Dokku server
+            uses: dokku/github-action@master
+            with:
+              branch: 'main'
+              git_remote_url: ssh://dokku@${{ secrets.DOKKU_SERVER_IP }}/${{ secrets.DOKKU_APP_NAME }}
+              ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
+      ```
+      Lalu menambahkan file .dockerignore pada root folder dengan isi yang akan mengesampingkan file file yang tidak dibutuhkan pada deployment. Menambahkan file Dockerfile pada root folder dengan isi 
+      ```
+      FROM python:3.10-slim-buster
+
+      WORKDIR /app
+
+      ENV PYTHONUNBUFFERED=1 \
+          PYTHONPATH=/app \
+          DJANGO_SETTINGS_MODULE=inventory.settings \
+          PORT=8000 \
+          WEB_CONCURRENCY=2
+
+      # Install system packages required Django.
+      RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
+      && rm -rf /var/lib/apt/lists/*
+
+      RUN addgroup --system django \
+          && adduser --system --ingroup django django
+
+      # Requirements are installed here to ensure they will be cached.
+      COPY ./requirements.txt /requirements.txt
+      RUN pip install -r /requirements.txt
+
+      # Copy project code
+      COPY . .
+
+      RUN python manage.py collectstatic --noinput --clear
+
+      # Run as non-root user
+      RUN chown -R django:django /app
+      USER django
+      ```
+      Menambahkan 
+      ```
+      from pathlib import Path
+      import environ # Tambahkan kode berikut
+      import os # Tambahkan kode berikut
+      ```
+      dan
+      ```
+      BASE_DIR = Path(__file__).resolve().parent.parent
+
+      env = environ.Env() 
+      ```
+      dan 
+      ```
+      PRODUCTION = env.bool('PRODUCTION', False)
+      ```
+      dan 
+      ```
+      if PRODUCTION:
+      DATABASES = {
+          'default': env.db('DATABASE_URL')
+      }
+      DATABASES["default"]["ATOMIC_REQUESTS"] = True
+      ```
+      dan 
+      ```
+      STATIC_URL = 'static/'
+
+      STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+      ``` 
+      di file settings.py dari project atau inventory. Lalu menambahkan Secret dan Variable di settings dari project di github. dengan nama DOKKU_SERVER_IP dengan valuenya `pbp.cs.ui.ac.id` dan DOKKU_APP_NAME dengan valuenya `thirza-ahmad-tugas` dan DOKKU_SSH_PRIVATE_KEY	dengan valuenya dari SSH private key yang ada di putty gen.
+
+  - **Menambahkan fungsionalitas hapus dengan menggunakan AJAX DELETE**
+    - menambahkan fungsi `delete_item_ajax` di views.py. fungsi ini adalah fungsi yang akan menghapus item dari database berdasarkan id item. Menambahkan dropdown button disetiap item di inventory yang mengarah ke fungsi deleteItems(pk). Lalu menambahkan fungsi `deleteItems(pk)` di javascriptnya yang akan melakukan fetch pada url `/main/delete_item_ajax/pk` dan melakukan method DELETE dan merefresh item. 
