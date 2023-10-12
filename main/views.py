@@ -150,3 +150,22 @@ def delete_item_ajax(request, id):
         except Item.DoesNotExist:
             return HttpResponse({'error': 'Item not found'}, status=404)
 
+@csrf_exempt
+def add_amount_ajax(request, id):
+    try:
+        item = get_object_or_404(Item, pk=id)
+        item.amount += 1
+        item.save()
+        return HttpResponse("Deleted", status=200)
+    except Item.DoesNotExist:
+        return HttpResponse({'error': 'Item not found'}, status=404)
+    
+@csrf_exempt
+def reduce_amount_ajax(request, id):
+    try:
+        item = get_object_or_404(Item, pk=id)
+        item.amount -= 1
+        item.save()
+        return HttpResponse("Deleted", status=200)
+    except Item.DoesNotExist:
+        return HttpResponse({'error': 'Item not found'}, status=404)

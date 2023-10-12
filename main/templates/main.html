@@ -93,7 +93,7 @@
         </div>  
         {% endfor %}
         
-        <div class="text-dark bg-light border rounded border-0 border-light d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5">
+        <div class="text-dark bg-light border rounded border-0 border-light d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5" style="margin-top: 20px;">
             <div class="pb-2 pb-lg-1">
                 <h2 class="fw-bold mb-2">Isi dari inventory yang diambil melalui AJAX</h2>
                 <p class="mb-0">Dapat melihat perbedaan ketika menambah item dan mengurangi item dari inventory</p>
@@ -253,6 +253,8 @@
                                             Action
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" onClick="addAmount(${item.pk})">Add Amount</a></li>
+                                            <li><a class="dropdown-item" onClick="subAmount(${item.pk})" >Sub Amount</a></li>
                                             <li><a class="dropdown-item" onClick="deleteItems(${item.pk})">Delete Data</a></li>
                                         </ul>
                                     </div>
@@ -277,12 +279,22 @@
             return false
         }
 
+        async function addAmount(pk) {
+            await fetch(`/main/add_amount_ajax/${pk}`).then(refreshItems)
+        }
+
+        async function subAmount(pk) {
+            await fetch(`/main/reduce_amount_ajax/${pk}`).then(refreshItems)
+        }
+
         async function deleteItems(pk) {
             await fetch(`/main/delete_item_ajax/${pk}`, {
                 method: "DELETE",
             }).then(refreshItems)
         }
         
+
+
         document.getElementById("button_add").onclick = addItems
         
         refreshItems()
