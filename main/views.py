@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from main.forms import ItemForm, ItemFromAutoUser
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from main.forms import ItemForm
 from main.models import Item
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404
 from django.core import serializers
 from django.urls import reverse
 from django.shortcuts import redirect
@@ -34,9 +35,9 @@ def add_item(request):
     form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
-        product = form.save(commit=False)
-        product.user = request.user
-        product.save()
+        item = form.save(commit=False)
+        item.user = request.user
+        item.save()
         return HttpResponseRedirect(reverse("main:main_view"))
     
     context = {"form": form}
@@ -119,7 +120,7 @@ def delete_data(request, id):
 
 
 def get_item_json(request):
-    items = Item.objects.all()
+    items = Item.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', items))
 
 @csrf_exempt
@@ -130,14 +131,22 @@ def add_item_ajax(request):
         amount = request.POST.get("amount")
         description = request.POST.get("description")
         engine = request.POST.get("engine")
-        winglet = request.POST.get("winglet")
+        winglet = request.POST.get("winglet") == "true"
         image = request.POST.get("image")
 
         item = Item(user=user, name=name, amount=amount, description=description, engine=engine, winglet=winglet, image=image)
         item.save()
 
-        return HttpResponse("Created", status=201)
-    return HttpResponse("Failed", status=400)
+        return HttpResponse(b"Created", status=201)
+    return HttpResponse("Not Found", status=404)
 
-
+@csrf_exempt
+def delete_item_ajax(request, id):
+    if request.method == "DELETE":
+        try:
+            item = get_object_or_404(Item, pk=id)
+            item.delete()
+            return HttpResponse("Deleted", status=200)
+        except Item.DoesNotExist:
+            return HttpResponse({'error': 'Item not found'}, status=404)
 

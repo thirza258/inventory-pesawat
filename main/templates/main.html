@@ -59,32 +59,6 @@
                 <p class="w-lg-50"> Terdapat {{jumlah_item}} pesawat yang terdaftar pada aplikasi Inventory ini</p>
             </div>
         </div>
-
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Add Amount</th>
-                <th>Description</th>
-                <th>Engine Type</th>
-                <th>Have Winglet</th>
-                <th>Delete Item</th>
-            </tr>
-        
-            {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-        
-            {% for item in inventory %}
-                <tr>
-                    <td>{{item.name}}</td>
-                    <td>{{item.amount}}</td>
-                    <td><a href="{% url 'main:add_amount' item.id %}"><button>Add Amount</button></td>
-                    <td>{{item.description}}</td>
-                    <td>{{item.engine}}</td>
-                    <td>{{item.winglet}}</td>
-                    <td><a href="{% url 'main:delete_data' item.id %}"><button>Delete Data</button></td>
-                </tr>
-            {% endfor %}
-        </table>
         
         {% for item in inventory %}
         <div class="container">
@@ -118,46 +92,66 @@
             </div>
         </div>  
         {% endfor %}
-            
+        
+        <div class="text-dark bg-light border rounded border-0 border-light d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5">
+            <div class="pb-2 pb-lg-1">
+                <h2 class="fw-bold mb-2">Isi dari inventory yang diambil melalui AJAX</h2>
+                <p class="mb-0">Dapat melihat perbedaan ketika menambah item dan mengurangi item dari inventory</p>
+            </div>
+            <div class="my-2"></div>
+        </div>
+
         <div id="item_view">
-            <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Pesawat</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="form" onsubmit="return false;">
-                                {% csrf_token %}
-                                <div class="mb-3">
-                                    <label for="name" class="col-form-label">Name:</label>
-                                    <input type="text" class="form-control" id="name" name="name"></input>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="price" class="col-form-label">Amount</label>
-                                    <input type="number" class="form-control" id="amount" name="amount"></input>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="description" class="col-form-label">Description:</label>
-                                    <textarea class="form-control" id="description" name="description"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="description" class="col-form-label">Engine:</label>
-                                    <textarea class="form-control" id="description" name="description"></textarea>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
-                        </div>
+            
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="col-form-label">Amount:</label>
+                                <input type="number" class="form-control" id="amount" name="amount"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <textarea class="form-control" id="description" name="description"></textarea>
+                            </div>
+                            <div class"mb-3">
+                                <label for="engine" class="col-form-label">Engine:</label>
+                                <select class="form-control" name="engine" id="engine">
+                                    <option value="" selected="">---------</option>
+                                    <option value="Jet">Jet</option>
+                                    <option value="Propeller">Propeller</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="winglet" class="col-form-label">Winglet:</label>
+                                <input type="checkbox" name="winglet" id="winglet" value="true" ></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="col-form-label">Image:</label>
+                                <input type="url" class="form-control" id="image" name="image">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#itemModal">Add Product by AJAX</button>
+        
 
         <section class="py-4 py-xl-5">
             <div class="container">
@@ -169,6 +163,7 @@
                                 <p class="mb-4">Pesawat anda akan disimpan dengan aman dan terawat, memastikan bahwa ia siap untuk penerbangan selanjutnya dengan keamanan dan kualitas terbaik.</p>
                                 <div class="my-3">
                                     <a class="btn btn-primary btn-lg me-2" role="button" href="{% url 'main:add_item' %}">Tambah Pesawat</a>
+                                    <button type="button" class="btn btn-primary btn-lg me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
                             </div>
                         </div>
                         <div class="col-md-6 order-first order-md-last">
@@ -257,7 +252,9 @@
                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Action
                                         </button>
-                                        
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" onClick="deleteItems(${item.pk})">Delete Data</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +267,7 @@
             document.getElementById("item_view").innerHTML = htmlString
         }
         
-        function addItems() {
+        async function addItems() {
             fetch("{% url 'main:add_item_ajax' %}", {
                 method: "POST",
                 body: new FormData(document.querySelector('#form'))
@@ -279,6 +276,14 @@
             document.getElementById("form").reset()
             return false
         }
+
+        async function deleteItems(pk) {
+            await fetch(`/main/delete_item_ajax/${pk}`, {
+                method: "DELETE",
+            }).then(refreshItems)
+        }
+        
+        document.getElementById("button_add").onclick = addItems
         
         refreshItems()
     </script>
