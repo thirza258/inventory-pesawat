@@ -297,11 +297,11 @@ Referensi :
     - **Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.**
       - membuat fungsi view baru di views.py. fungsi ini adalah `add_item_ajax` yang akan menggunakan request method **POST** lalu meminta data dari form yang telah diisi oleh user yaitu mengisi seluruh atribut model dari Item. Lalu mencocokan atribut yang diisi pada form dengan atribut model dan  menyimpan data tersebut ke database dengan `item.save()`. Lalu mengembalikan redirect ke halaman utama.
     - **Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.**
-      - Menambahkan path `/create-ajax/` di urls.py yang mengarah ke fungsi view `add_item_ajax`.
+      - Menambahkan path `main/create-ajax/` di urls.py yang mengarah ke fungsi view `add_item_ajax`.
     - **Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.**
       - Membuat fungsi javascript di script yang akan mengambil data dari form melalui url dari `add_item_ajax`. Lalu menggunakan method POST dan body dari addItems adalah FormData dan FormDatanya merupakan form di modal. Setelah form diisi akan merefresh Items dengan `refreshItems`.
     - **Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.**
-      - Menambahkan fungsi `refreshItems` di javascript yang akan mengambil data dari `get_item_json` lalu mengubah card yang ada di halaman utama menjadi card yang baru. Card yang baru akan mengambil data dari `get_item_json` lalu masuk ke fungsi `refreshItems` yang akan menerjemahkan data json menjadi card yang baru. Lalu method ini hanya akan melakukan refresh pada Items daripada refresh keseluruhan.
+      - Menambahkan fungsi `refreshItems` di javascript yang akan mengambil data dari `get_item_json` lalu mengubah card yang ada di halaman utama menjadi card yang baru. Card yang baru akan mengambil data dari `get_item_json` lalu masuk ke fungsi `refreshItems` yang akan menerjemahkan data json menjadi card yang baru. Lalu method ini hanya akan melakukan refresh pada Items daripada refresh keseluruhan. 
 
   - **Melakukan perintah collectstatic.**
     - Menjalankan collect static untuk mengambil static file dari bootstrap dan jquery dan static file yang dibuat sendiri. Yaitu dengan menjalankan `python manage.py collectstatic`
@@ -404,6 +404,10 @@ Referensi :
       STATIC_ROOT = os.path.join(BASE_DIR, 'static')
       ``` 
       di file settings.py dari project atau inventory. Lalu menambahkan Secret dan Variable di settings dari project di github. dengan nama DOKKU_SERVER_IP dengan valuenya `pbp.cs.ui.ac.id` dan DOKKU_APP_NAME dengan valuenya `thirza-ahmad-tugas` dan DOKKU_SSH_PRIVATE_KEY	dengan valuenya dari SSH private key yang ada di putty gen.
+      URL Deployment : [URL](http://thirza-ahmad-tugas.pbp.cs.ui.ac.id/login/)
+      ```
+      http://thirza-ahmad-tugas.pbp.cs.ui.ac.id/
+      ```
 
   - **Menambahkan fungsionalitas hapus dengan menggunakan AJAX DELETE**
     - menambahkan fungsi `delete_item_ajax` di views.py. fungsi ini adalah fungsi yang akan menghapus item dari database berdasarkan id item. Menambahkan dropdown button disetiap item di inventory yang mengarah ke fungsi deleteItems(pk). Lalu menambahkan fungsi `deleteItems(pk)` di javascriptnya yang akan melakukan fetch pada url `/main/delete_item_ajax/pk` dan melakukan method DELETE dan merefresh item. 
