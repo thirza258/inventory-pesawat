@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.views.generic import UpdateView
 from django.views.decorators.csrf import csrf_exempt 
+import json
 
 
 # Create your views here.
@@ -169,3 +170,25 @@ def reduce_amount_ajax(request, id):
         return HttpResponse("Item Amount Reduced", status=200)
     except Item.DoesNotExist:
         return HttpResponse({'error': 'Item not found'}, status=404)
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_product = Item.objects.create(
+            user = request.user,
+            name = data["name"],
+            amount = int(data["amount"]),
+            description = data["description"],
+            engine = data["engine"],
+            winglet = data["winglet"],
+            image = data["image"]
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
