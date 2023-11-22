@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import logout as auth_logout
 
-@csrf_exempt
+
 def login(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -32,7 +32,7 @@ def login(request):
         }, status=401)
     
 
-@csrf_exempt
+
 def logout(request):
     username = request.user.username
 

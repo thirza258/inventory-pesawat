@@ -183,7 +183,7 @@ def create_product_flutter(request):
             amount = int(data["amount"]),
             description = data["description"],
             engine = data["engine"],
-            winglet = data["winglet"],
+            winglet = data["winglet"] == "true",
             image = data["image"]
         )
 
